@@ -1,6 +1,6 @@
 <% content_for :head do %>
-  <%= javascript_include_tag states_url(:format => :js) %>
-  <%= javascript_include_tag countries_url(:format => :js) %>
+  <%= javascript_include_tag api_states_url(:format => :js) %>
+  <%= javascript_include_tag api_countries_url(:format => :js) %>
 <% end %>
 
 <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @address } %>
