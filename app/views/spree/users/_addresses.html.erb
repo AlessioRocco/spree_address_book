@@ -1,12 +1,12 @@
 <div data-hook="account_addresses" class="account-section" id="addresses">
-  <h3><%= t(:shipping_addresses, :scope => :address_book) %></h3>
+  <h3>Address Book</h3>
   <div class="line"></div>
   <% if spree_current_user.addresses.present? %>
   <div id="user_addresses">
    
       <% spree_current_user.addresses.each do |address| %>
       <div class="<%= cycle('even', 'odd') %>">
-        <div><%= address %></div>
+        <div class="address"><%= address %></div>
         
           <%= link_to Spree.t(:edit), edit_address_path(address) %>&nbsp;
           <%= link_to Spree.t(:remove), address_path(address), :method => :delete, :confirm => Spree.t(:are_you_sure) %>
@@ -16,11 +16,9 @@
    
   </div>
   <% else %>
-  <div id="users-address-list-empty">
-    <%= t(:no_shipping_addresses_on_file, :scope => :address_book) %>
-  </div>
+  <div id="users-address-list-empty">You do not have any saved addresses.</div>
   <% end %>
   <div id="new_address_link">
-    <%= link_to t(:add_new_shipping_address, :scope => :address_book), :controller => :addresses, :action => :new %>
+    <%= link_to 'Add New Address', :controller => :addresses, :action => :new %>
   </div>
 </div>
