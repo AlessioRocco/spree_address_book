@@ -1,10 +1,10 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_address_book'
-  s.version     = '2.2.2'
+  s.version     = '3.0.0'
   s.summary     = "Adds an Address Book for Spree Users"
   s.description = "A gem for that adds a managable Address Book of Shipping and Billing Addresses for each Spree User"
-  s.required_ruby_version = '>= 1.9.3'
+  s.required_ruby_version = '>= 2.1.2'
   s.date        = '2014-06-19'
 
   s.authors            = ["Roman Smirnov"]
@@ -16,9 +16,10 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  spree_version = '~> 2.3'
+  spree_version = '~> 3.0'
   s.add_dependency 'spree_core', spree_version
   s.add_dependency 'spree_frontend', spree_version
+  s.add_dependency 'spree_auth_devise'
 
   s.add_development_dependency 'sass-rails', '~> 4.0.2'
   s.add_development_dependency 'coffee-rails'
