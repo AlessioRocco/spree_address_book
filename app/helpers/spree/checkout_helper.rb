@@ -1,5 +1,5 @@
-Spree::CheckoutHelper.module_eval do
-
+module Spree::CheckoutHelper
+  
   def address_is_checked(order, address, address_type)
     field = address_type == 'shipping' ? :ship_address_id : :bill_address_id
     selected = order.public_send(field) if order.public_send(field).present?
