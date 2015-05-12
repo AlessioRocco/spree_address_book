@@ -51,6 +51,19 @@ class Spree::AddressesController < Spree::StoreController
     end
   end
 
+  # set default addresses from account page
+  # patch /addresses/:id/update_default
+  def update_default
+    @user = current_spree_user
+    @address = Spree::Address.find(params[:id])
+    @user.save_default_addresses(
+      params[:address_default_bill],
+      params[:address_default_ship],
+      @address
+    )
+   redirect_back_or_default(account_path)
+  end
+
   def destroy
     @address.destroy
 

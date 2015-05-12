@@ -10,5 +10,9 @@ Spree::Core::Engine.add_routes do
     end
   end
 
-  resources :addresses
+  resources :addresses do
+    member do
+      put :update_default
+    end
+  end
 end
