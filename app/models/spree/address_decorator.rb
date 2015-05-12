@@ -1,5 +1,6 @@
 Spree::Address.class_eval do
   belongs_to :user, :class_name => Spree.user_class.to_s
+  acts_as_paranoid
 
   def self.required_fields
     Spree::Address.validators.map do |v|
@@ -17,10 +18,6 @@ Spree::Address.class_eval do
     new_record? || !Spree::Order.complete.where("bill_address_id = ? OR ship_address_id = ?", self.id, self.id).exists?
   end
 
-  def can_be_deleted?
-    shipments.empty? && Spree::Order.where("bill_address_id = ? OR ship_address_id = ?", self.id, self.id).count == 0
-  end
-
   def to_s
     [
       "#{firstname} #{lastname}",
@@ -32,12 +29,4 @@ Spree::Address.class_eval do
     ].reject(&:empty?).join(" <br/>").html_safe
   end
 
-  # UPGRADE_CHECK if future versions of spree have a custom destroy function, this will break
-  def destroy
-    if can_be_deleted?
-      super
-    else
-      update_column :deleted_at, Time.now
-    end
-  end
 end
