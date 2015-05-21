@@ -19,7 +19,6 @@ Gem::Specification.new do |s|
   spree_version = '~> 3.0'
   s.add_dependency 'spree_core', spree_version
   s.add_dependency 'spree_frontend', spree_version
-  s.add_dependency 'spree_auth_devise'
 
   s.add_development_dependency 'sass-rails', '~> 4.0.2'
   s.add_development_dependency 'coffee-rails'
