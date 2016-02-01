@@ -13,6 +13,11 @@ Spree.user_class.class_eval do
     update_attributes(ship_address_id: address.id) if shipping.present?
   end
 
+  def remove_default_addresses(address)
+    update_attribute(:bill_address_id, nil) if bill_address_id == address.id
+    update_attribute(:ship_address_id, nil) if ship_address_id == address.id
+  end
+
   # This is the method that Spree calls when the user has requested that the
   # address be their default address. Spree makes a copy from the order. Instead
   # we just want to reference the address so we don't create extra address objects.

@@ -65,6 +65,7 @@ class Spree::AddressesController < Spree::StoreController
   end
 
   def destroy
+    spree_current_user.remove_default_addresses(@address)
     @address.destroy
 
     flash[:notice] = Spree.t(:successfully_removed, :resource => Spree.t(:address1))
